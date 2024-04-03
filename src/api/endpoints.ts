@@ -1,5 +1,5 @@
 export default {
-  serverBaseUrl: "http://localhost:8080",
+  serverBaseUrl: "https://hotel-order-app.onrender.com",
   api: {
     users: {
       create: "/users",
