@@ -99,7 +99,7 @@ const orderSlice = createSlice({
       const dishIndex =
         order && order?.items?.findIndex((i) => i?.dish?._id === dish?._id);
       //if dish exists
-      if (dishIndex !== undefined && dishIndex != -1) {
+      if (dishIndex !== undefined && dishIndex !== -1) {
         //decrement quantity by 1
         //get the order dish by index
         const dishItem = order?.items?.at(dishIndex);

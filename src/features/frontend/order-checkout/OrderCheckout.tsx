@@ -67,7 +67,7 @@ const CheckoutItem: React.FunctionComponent<ICheckoutItem> = ({
           <p>
             <Button
               variant="contained"
-              disabled={orderQty <= 1 || status === 2 || status == 3}
+              disabled={orderQty <= 1 || status === 2 || status === 3}
               onClick={() => decrementQty(dish)}
             >
               -
@@ -110,10 +110,10 @@ const OrderCheckout: React.FunctionComponent<IOrderCheckoutProps> = (props) => {
     const newOrder = { ...currentOrder };
     const items = Array.isArray(newOrder?.items) ? [...newOrder?.items] : [];
     const dishIndex = items?.findIndex(
-      (item: any) => item?.dish?._id == dish?._id
+      (item: any) => item?.dish?._id === dish?._id
     );
 
-    if (dishIndex != undefined && dishIndex >= 0) {
+    if (dishIndex !== undefined && dishIndex >= 0) {
       const item = { ...items[dishIndex] };
       if (op === "-" && item?.qty > 1) item.qty = item?.qty - 1;
       if (op === "+") item.qty = item?.qty + 1;
@@ -175,14 +175,14 @@ const OrderCheckout: React.FunctionComponent<IOrderCheckoutProps> = (props) => {
     }
   };
 
-  const loadOneOrder = async () => {
+  const loadOneOrder = React.useCallback(async () => {
     const { data } = await OrderService?.fetchOneOrder(
       `?tableNo=${selectedTable}&status=0`
     );
     // console.log("datat:"data );
     if (data?.data) setCurrentOrder(data?.data);
     else {
-      const order = orders?.find((o) => o?.tableNo == selectedTable);
+      const order = orders?.find((o) => o?.tableNo === selectedTable);
 
       if (order && order?.items?.length > 0) setCurrentOrder(order);
       else
@@ -193,12 +193,12 @@ const OrderCheckout: React.FunctionComponent<IOrderCheckoutProps> = (props) => {
           _id: "",
         });
     }
-  };
+  }, [selectedTable, orders]);
 
   React.useEffect(() => {
     // get the order of selected table no
     loadOneOrder();
-  }, [selectedTable, orders, loadOneOrder]);
+  }, [loadOneOrder]);
 
   const getTable = (table: number) => {
     if (table > 0) setSelectedTable(table);
@@ -259,7 +259,8 @@ const OrderCheckout: React.FunctionComponent<IOrderCheckoutProps> = (props) => {
             <Card sx={{ bgcolor: (theme) => theme.palette.mode }}>
               <h3>Table NO: {currentOrder?.tableNo}</h3>
               <h3>
-                Status: {currentOrder?.status === 1 ? "processing" : "completed"}
+                Status:{" "}
+                {currentOrder?.status === 1 ? "processing" : "completed"}
               </h3>
             </Card>
 

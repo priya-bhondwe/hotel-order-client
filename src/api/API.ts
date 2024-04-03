@@ -23,7 +23,7 @@ API.interceptors.response.use(
     return Promise.reject(response);
   },
   (err) => {
-    if (err?.response?.status == 401) {
+    if (err?.response?.status === 401) {
       //it token is invalid / expired then serer return 401  response status code
       const token = sessionStorage.getItem("refreshToken");
       console.log("RefreshToken", token);
@@ -39,7 +39,7 @@ API.interceptors.response.use(
         })
 
         .catch(console.error);
-    } else if (err?.response?.status == 403) {
+    } else if (err?.response?.status === 403) {
       sessionStorage.clear();
       // window.location.href = "http://localhost:3000/login";
     }

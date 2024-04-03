@@ -134,7 +134,7 @@ const Dishes: React.FunctionComponent<IDishProps> = (props) => {
       label: "Status",
       options: {
         customBodyRender(status: number) {
-          return status == 1 ? "Active" : "Inactive";
+          return status === 1 ? "Active" : "Inactive";
         },
       },
     },

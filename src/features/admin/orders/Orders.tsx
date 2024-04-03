@@ -40,7 +40,7 @@ const Orders: React.FunctionComponent<IOrdersProps> = (props) => {
     const query = `?itemId=${itemId}&status=${status}`;
     OrderService?.updateOrder(orderId, { chef: selectedChef }, query)
       .then((data) => {
-        if (status == 1) {
+        if (status === 1) {
           //order is accepted
           setIsOrderAccepted(true);
         }

@@ -13,8 +13,7 @@ import { useForm } from "react-hook-form";
 import User from "../../../shared/models/UserModels";
 import AuthService from "../../../services/AuthService";
 import { errorMessage } from "../../../shared/ui/toasts/Toasts";
-import { useDispatch } from "react-redux";
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();

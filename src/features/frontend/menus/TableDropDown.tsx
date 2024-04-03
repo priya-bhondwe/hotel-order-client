@@ -35,7 +35,7 @@ const TableDropDown: React.FunctionComponent<ITableDropDownProps> = ({
     const tableNO = localStorage.getItem("selectedTable");
     // if (tableNO) setSelectedTable(parseInt(tableNO));
     if (tableNO) updateTableNumber(parseInt(tableNO));
-  }, [onchange]);
+  }, [onchange, updateTableNumber]);
 
   const handleChange = (e: SelectChangeEvent<HTMLInputElement>) => {
     const num = e?.target?.value as string;

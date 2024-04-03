@@ -43,7 +43,7 @@ const ProtectedRoute: React.FunctionComponent<IProtectedRoutes> = ({
     } else {
       clearSession();
     }
-  }, []);
+  }, [dispatch, navigate]);
   // get logged user from redux state
   //access from redux state
   const loggedUser = useSelector(selectUser);
