@@ -45,7 +45,7 @@ function Header() {
             sx={{
               ms: "auto",
               flexGrow: 1,
-              display: { xs: "flex", md: "none"  },
+              display: { xs: "flex", md: "none" },
               justifyContent: "flex-end",
             }}
           >

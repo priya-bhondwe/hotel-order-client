@@ -10,19 +10,12 @@ const ImageForm = () => {
         className="polaroid-img"
         style={{ marginLeft: "10px" }}
       >
-        <Grid
-          item
-          md={6}
-          xs={12}
-          // style={{
-          //   width: "50%",
-          // }}
-        >
+        <Grid item md={6} xs={12}>
           <Grid
             className="polaroid rotate_right"
             style={{
               width: "284px",
-              padding: "10px",
+              padding: "8px",
               border: "1px solid #BFBFBF",
               backgroundColor: "white",
               boxShadow: "10px 10px 5px #aaaaaa",
@@ -35,7 +28,7 @@ const ImageForm = () => {
               src="../images/biryani.png"
               alt="Biryani"
               width="284"
-              height="213"
+              height="200"
             />
             <p className="caption">Biryani - A delicious rice dish.</p>
           </Grid>
@@ -44,7 +37,7 @@ const ImageForm = () => {
             className="polaroid rotate_left"
             style={{
               width: "284px",
-              padding: "10px",
+              padding: "8px",
               border: "1px solid #BFBFBF",
               backgroundColor: "white",
               boxShadow: "10px 10px 5px #aaaaaa",
@@ -56,7 +49,7 @@ const ImageForm = () => {
               src="../images/vegetable.png"
               alt="Vegetable Dish"
               width="284"
-              height="213"
+              height="200"
             />
             <p className="caption">Vegetable Dish - Fresh and healthy.</p>
           </Grid>
@@ -66,7 +59,7 @@ const ImageForm = () => {
             className="polaroid rotate_right"
             style={{
               width: "284px",
-              padding: "10px",
+              padding: "8px",
               border: "1px solid #BFBFBF",
               backgroundColor: "white",
               boxShadow: "10px 10px 5px #aaaaaa",
@@ -79,7 +72,7 @@ const ImageForm = () => {
               src="../images/south-indian.png"
               alt="Biryani"
               width="284"
-              height="213"
+              height="200"
             />
             <p className="caption">
               South Indian Food - Delicious and aromatic.
@@ -89,7 +82,7 @@ const ImageForm = () => {
           <Grid
             className="polaroid rotate_left"
             style={{
-              padding: "10px",
+              padding: "8px",
               border: "1px solid #BFBFBF",
               backgroundColor: "white",
               boxShadow: "10px 10px 5px #aaaaaa",
@@ -101,7 +94,7 @@ const ImageForm = () => {
               src="../images/vadapav.jpg"
               alt="Vegetable Dish"
               width="284"
-              height="213"
+              height="200"
             />
             <p className="caption">
               Vadapav - Spicy and flavorful street food.
@@ -151,44 +144,54 @@ const Home = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 borderRadius: "20%",
-                // padding: "10px",
               }}
             >
               <Typography
                 variant="h3"
                 sx={{
+                  justifyContent: "end",
                   fontFamily: "cursive",
-                  textAlign: "right",
                   paddingTop: { xs: "50px" },
                   margin: 0,
-                  fontSize: { xs: "30px", sm: "20px", md: "30px" },
+                  fontSize: { xs: "24px", sm: "30px", md: "30px" },
                 }}
               >
                 <b>Best Food For Your Taste</b>
               </Typography>
-              <p style={{ textAlign: "center", fontFamily: "cursive" }}>
+              <p
+                style={{
+                  textAlign: "center",
+                  fontFamily: "cursive",
+                  margin: "10px 0",
+                }}
+              >
                 Discover delectable cuisine and unforgettable moments in our
                 welcoming culinary haven
               </p>
               <Box
                 style={{
                   display: "flex",
+                  justifyContent: "center",
+                  width: "100%",
                 }}
               >
-                <Button type="button" variant="text">
+                <Button
+                  type="button"
+                  variant="text"
+                  style={{ margin: "0 10px" }}
+                >
                   <Link to="/order-checkout">See A Order</Link>
                 </Button>
-                <Button type="button" variant="text">
+                <Button
+                  type="button"
+                  variant="text"
+                  style={{ margin: "0 10px" }}
+                >
                   <Link to="/menus"> Explore Menu</Link>
                 </Button>
               </Box>
-              <Grid style={{ textAlign: "center" }}>
-                <img
-                  src="../\images\all food.png"
-                  width="300"
-                  height="200"
-                  alt=""
-                />
+              <Grid style={{ textAlign: "center", marginTop: "20px" }}>
+                <img src="../\images\all food.png" width="100%" alt="" />
               </Grid>
             </Paper>
           </Grid>
