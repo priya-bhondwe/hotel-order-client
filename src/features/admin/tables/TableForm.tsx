@@ -29,7 +29,7 @@ const tableSchema = Yup.object().shape({
 interface ITableFormProps {}
 
 const TableForm: React.FunctionComponent<ITableFormProps> = (props) => {
-  const { operation, loadTables, selectedTable, onClose, open } =
+  const { operation, loadTables, selectedTable, onClose } =
     React.useContext(TableContext);
 
   const {
@@ -48,7 +48,7 @@ const TableForm: React.FunctionComponent<ITableFormProps> = (props) => {
     const table: any = { type, tableNo, capacity, status };
     console.log("Table:", table);
 
-    if (operation == "edit") {
+    if (operation === "edit") {
       //update the table
       TableService?.updateTable(selectedTable?._id as string, table)
         .then((response) => {
@@ -156,7 +156,7 @@ const TableForm: React.FunctionComponent<ITableFormProps> = (props) => {
 
             <Grid item xs={12}>
               <Button variant="contained" type="submit">
-                {operation == "edit" ? "Update" : "Create"}
+                {operation === "edit" ? "Update" : "Create"}
               </Button>
             </Grid>
           </Grid>

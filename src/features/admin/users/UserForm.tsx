@@ -88,7 +88,7 @@ const UserForm: React.FunctionComponent<IUserFormProps> = (props) => {
     if (user?.role) fd.append("role", user?.role);
     if (avatar) fd.append("avatar", avatar);
 
-    if (operation == "edit") {
+    if (operation === "edit") {
       //update the user
       UserService?.updateUser(selectedUser?._id as string, fd)
         .then((response) => {
@@ -232,7 +232,7 @@ const UserForm: React.FunctionComponent<IUserFormProps> = (props) => {
                 margin: 1,
               }}
             >
-              <img style={{ width: "100%", height: "100%" }} src={profilePic} />
+              <img style={{ width: "100%", height: "100%" }} src={profilePic} alt="" />
               <IconButton
                 sx={{
                   position: "absolute",
@@ -255,7 +255,7 @@ const UserForm: React.FunctionComponent<IUserFormProps> = (props) => {
           </Grid>
           <Grid item xs={12}>
             <Button variant="contained" type="submit">
-              {operation == "edit" ? "Update" : "Create"}
+              {operation === "edit" ? "Update" : "Create"}
             </Button>
           </Grid>
         </Grid>

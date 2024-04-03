@@ -1,4 +1,4 @@
-import { AppDispatch, RootState } from "../../../app/store";
+import { AppDispatch } from "../../../app/store";
 import OrderService from "../../../services/OrderService";
 import {
   updateOrder as updateOrderAction,
@@ -7,7 +7,6 @@ import {
 } from "../../../app/slice/orderSlice";
 import { errorMessage, successMessage } from "../../../shared/ui/toasts/Toasts";
 import Order from "../../../shared/models/OrderModel";
-import { string } from "yup";
 
 export const updateOrder: (
   id: string,

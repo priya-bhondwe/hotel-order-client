@@ -16,7 +16,7 @@ const ResetPassword: React.FunctionComponent<IResetPasswordProps> = (props) => {
     AuthService.validateToken(token)
       .then((response) => {
         setUserId(response?.data?.data?.id); //id come from server store
-        sessionStorage.setItem("accessToken",token)
+        sessionStorage.setItem("accessToken", token);
       })
       .catch((err) => {
         console.log(err);
@@ -29,7 +29,7 @@ const ResetPassword: React.FunctionComponent<IResetPasswordProps> = (props) => {
     if (token) {
       validateToken(token);
     }
-  }, [token]);
+  }, [token, validateToken]);
 
   return (
     <>

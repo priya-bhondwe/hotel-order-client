@@ -37,7 +37,7 @@ const OrderItem: React.FunctionComponent<IOrderItemProps> = ({
   const [isChefSelected, setIsChefSelected] = React.useState<boolean>(false);
 
   const handleChange = (e: SelectChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     if (value) {
       getChef(value as string);
       setIsChefSelected(true);
@@ -97,7 +97,7 @@ const OrderItem: React.FunctionComponent<IOrderItemProps> = ({
           md={2}
           sx={{ display: "flex", alignItems: "center" }}
         >
-          {status == 0 && (
+          {status === 0 && (
             <Button
               variant="contained"
               color="success"
@@ -109,7 +109,7 @@ const OrderItem: React.FunctionComponent<IOrderItemProps> = ({
               Accept
             </Button>
           )}
-          {status == 1 && (
+          {status === 1 && (
             <Button
               variant="contained"
               color="primary"

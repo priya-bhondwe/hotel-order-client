@@ -15,7 +15,7 @@ interface ITableDropDownProps {
 const TableDropDown: React.FunctionComponent<ITableDropDownProps> = ({
   getTable,
 }) => {
-  const { register, control } = useForm();
+  const { control } = useForm();
 
   const [tableData, setTableData] = React.useState<Table[]>([]);
   const [selectedTable, setSelectedTable] = React.useState<any>(0);
@@ -35,7 +35,7 @@ const TableDropDown: React.FunctionComponent<ITableDropDownProps> = ({
     const tableNO = localStorage.getItem("selectedTable");
     // if (tableNO) setSelectedTable(parseInt(tableNO));
     if (tableNO) updateTableNumber(parseInt(tableNO));
-  }, []);
+  }, [onchange]);
 
   const handleChange = (e: SelectChangeEvent<HTMLInputElement>) => {
     const num = e?.target?.value as string;

@@ -77,7 +77,7 @@ const DishForm: React.FunctionComponent<IDishFormProps> = ({
 
     if (picture?.file) fd.append("picture", picture?.file);
 
-    if (operation == "edit") {
+    if (operation === "edit") {
       if (selectedDish?._id)
         DishService.updateDish(selectedDish?._id, fd)
           .then((response) => {
@@ -122,7 +122,7 @@ const DishForm: React.FunctionComponent<IDishFormProps> = ({
     for (const p of Object.keys(selectedDish)) {
       setValue(p, selectedDish[p]);
     }
-  }, [selectedDish]);
+  }, [selectedDish, setValue]);
 
   return (
     <Container>
@@ -280,7 +280,7 @@ const DishForm: React.FunctionComponent<IDishFormProps> = ({
                 </Grid>
                 <Grid item xs={12}>
                   <Button fullWidth variant="contained" type="submit">
-                    {operation == "edit" ? "Update" : "Create"}
+                    {operation === "edit" ? "Update" : "Create"}
                   </Button>
                 </Grid>
               </Grid>

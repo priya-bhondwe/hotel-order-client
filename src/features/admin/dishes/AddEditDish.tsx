@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Container, Card, Grid, Box, Button } from "@mui/material";
+import { Container, Card, Grid } from "@mui/material";
 import { useParams, Link } from "react-router-dom";
 import DishForm from "./DishForm";
 import Dish from "../../../shared/models/DishModel";
@@ -31,7 +31,7 @@ const AddEditDish: React.FunctionComponent<IAddEditDishProps> = (props) => {
   };
 
   React.useEffect(() => {
-    if (operation == "edit" && id) {
+    if (operation === "edit" && id) {
       loadDish(id);
       // operation edit then fetch or default value set
     } else {

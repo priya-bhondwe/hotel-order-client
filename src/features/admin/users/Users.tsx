@@ -84,7 +84,7 @@ const Users: React.FunctionComponent<IDashboardProps> = (props) => {
           return (
             <img
               src={`${endpoints?.serverBaseUrl}/${u?.avatar}`}
-              style={{ width: 80, height: 80 }}
+              style={{ width: 80, height: 80 }} alt=""
             />
           );
         },
@@ -113,7 +113,7 @@ const Users: React.FunctionComponent<IDashboardProps> = (props) => {
       label: "Status",
       options: {
         customBodyRender(status: number) {
-          return status == 1 ? "Active" : "Inactive";
+          return status === 1 ? "Active" : "Inactive";
         },
       },
     },

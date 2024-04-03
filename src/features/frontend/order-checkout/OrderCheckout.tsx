@@ -36,18 +36,18 @@ const CheckoutItem: React.FunctionComponent<ICheckoutItem> = ({
   removeDish,
   dish,
   orderQty,
-  tableNo,
   status,
   chef,
 }) => {
-  const { name, picture, price, _id } = dish;
+  const { name, picture, price } = dish;
 
   return (
     <Card
       sx={{
         my: 1,
         p: 2,
-        backgroundColor: status == 2 ? "#f004" : status == 3 ? "#0f04" : "#fff",
+        backgroundColor:
+          status === 2 ? "#f004" : status === 3 ? "#0f04" : "#fff",
       }}
     >
       <Grid container spacing={2}>
@@ -61,13 +61,13 @@ const CheckoutItem: React.FunctionComponent<ICheckoutItem> = ({
         <Grid item xs={12} md={8}>
           <h4>{name}</h4>
           <h4>Price: {price}</h4>
-          {status == 3 && chef?.name?.first && (
+          {status === 3 && chef?.name?.first && (
             <p>Prepared by {chef?.name?.first + " " + chef?.name?.last} </p>
           )}
           <p>
             <Button
               variant="contained"
-              disabled={orderQty <= 1 || status == 2 || status == 3}
+              disabled={orderQty <= 1 || status === 2 || status == 3}
               onClick={() => decrementQty(dish)}
             >
               -
@@ -78,7 +78,7 @@ const CheckoutItem: React.FunctionComponent<ICheckoutItem> = ({
             <Button
               variant="contained"
               onClick={() => incrementQty(dish)}
-              disabled={status == 2 || status == 3}
+              disabled={status === 2 || status === 3}
             >
               +
             </Button>
@@ -115,9 +115,9 @@ const OrderCheckout: React.FunctionComponent<IOrderCheckoutProps> = (props) => {
 
     if (dishIndex != undefined && dishIndex >= 0) {
       const item = { ...items[dishIndex] };
-      if (op == "-" && item?.qty > 1) item.qty = item?.qty - 1;
-      if (op == "+") item.qty = item?.qty + 1;
-      // item.qty = item?.qty ? (op == "-" ? item?.qty - 1 : item?.qty + 1) : 0;
+      if (op === "-" && item?.qty > 1) item.qty = item?.qty - 1;
+      if (op === "+") item.qty = item?.qty + 1;
+
       items?.splice(dishIndex, 1, item);
       newOrder.items = items;
     }
@@ -161,12 +161,10 @@ const OrderCheckout: React.FunctionComponent<IOrderCheckoutProps> = (props) => {
   const removeDish = (dish: Dish) => {
     //remove current dish from current order
     const updatedItems = currentOrder?.items?.filter(
-      (item: any) => item?.dish?._id != dish?._id
+      (item: any) => item?.dish?._id !== dish?._id
     );
 
     const updatedOrder = { ...currentOrder, items: updatedItems };
-
-    // console.log("updated orders:", updateOrder);
 
     if (currentOrder?._id) {
       //dispatch thunk function to update the order at server side and in redux
@@ -199,18 +197,8 @@ const OrderCheckout: React.FunctionComponent<IOrderCheckoutProps> = (props) => {
 
   React.useEffect(() => {
     // get the order of selected table no
-    // const order = orders?.find((o) => o?.tableNo == selectedTable);
-
-    // if (order) setCurrentOrder(order);
-    // else
-    //   setCurrentOrder({
-    //     items: [],
-    //     status: 0,
-    //     tableNo: selectedTable,
-    //     _id: "",
-    //   });
     loadOneOrder();
-  }, [selectedTable, orders]);
+  }, [selectedTable, orders, loadOneOrder]);
 
   const getTable = (table: number) => {
     if (table > 0) setSelectedTable(table);
@@ -271,7 +259,7 @@ const OrderCheckout: React.FunctionComponent<IOrderCheckoutProps> = (props) => {
             <Card sx={{ bgcolor: (theme) => theme.palette.mode }}>
               <h3>Table NO: {currentOrder?.tableNo}</h3>
               <h3>
-                Status: {currentOrder?.status == 1 ? "processing" : "completed"}
+                Status: {currentOrder?.status === 1 ? "processing" : "completed"}
               </h3>
             </Card>
 

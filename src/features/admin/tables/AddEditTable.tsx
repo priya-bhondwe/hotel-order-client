@@ -5,12 +5,12 @@ import TableContext from "./TableContext";
 
 interface IAddEditTableProps {}
 
-const AddEditTable: React.FunctionComponent<IAddEditTableProps> = ({}) => {
+const AddEditTable: React.FunctionComponent<IAddEditTableProps> = () => {
   const { open, onClose, operation } = React.useContext(TableContext);
   return (
     <>
       <Dialog open={open} onClose={onClose}>
-        <DialogTitle>{operation == "add" ? "Add" : "Edit"}Table</DialogTitle>
+        <DialogTitle>{operation === "add" ? "Add" : "Edit"}Table</DialogTitle>
         <DialogContent>
           <TableForm />
         </DialogContent>

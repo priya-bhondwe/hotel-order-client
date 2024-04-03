@@ -22,8 +22,6 @@ const defaultTheme = createTheme();
 const ForgotPassword = () => {
   const [isSubmitted, setIsSubmitted] = React.useState(false);
 
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
   const {
     register,
     handleSubmit,

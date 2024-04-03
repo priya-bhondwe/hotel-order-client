@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Pie } from "react-chartjs-2";
-import Card from "@mui/material/Card";
-import { Grid, Paper, Typography } from "@mui/material";
+import { Grid, Paper } from "@mui/material";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import datalabels from "chartjs-plugin-datalabels";
 

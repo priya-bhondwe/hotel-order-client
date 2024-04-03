@@ -1,5 +1,4 @@
 import * as React from "react";
-import Order from "../../../shared/models/OrderModel";
 import OrderService from "../../../services/OrderService";
 import User from "../../../shared/models/UserModels";
 import UserService from "../../../services/UserService";
@@ -7,7 +6,6 @@ import { Container, Grid } from "@mui/material";
 import OrderItem from "./OrderItem";
 import { useDispatch, useSelector } from "react-redux";
 import { loadAllOrders } from "../../frontend/order-checkout/thunk-action";
-import { isTemplateExpression } from "typescript";
 import Swal from "sweetalert2";
 import { selectOrders } from "../../../app/slice/orderSlice";
 
@@ -15,7 +13,6 @@ interface IOrdersProps {}
 
 const Orders: React.FunctionComponent<IOrdersProps> = (props) => {
   const dispatch = useDispatch();
-  // const [rowOrders, setRowOrders] = React.useState<Order[]>();
   const [isOrderAccepted, setIsOrderAccepted] = React.useState<boolean>(false);
   const [users, setUsers] = React.useState<User[]>([]);
   const [selectedChef, setSelectedChef] = React.useState<string>();
@@ -27,11 +24,6 @@ const Orders: React.FunctionComponent<IOrdersProps> = (props) => {
     setSelectedChef(id);
   };
 
-  // const loadOrders = async (query: string) => {
-  //   const { data } = await OrderService?.fetchAllOrder(query);
-  //   if (data?.data) setRowOrders(data?.data);
-  //   console.log("Data :", data?.data);
-  // };
   const loadUsers = async (query: string) => {
     const { data } = await UserService?.fetchAllUser(query);
 
@@ -64,7 +56,7 @@ const Orders: React.FunctionComponent<IOrdersProps> = (props) => {
     // loadOrders("?status=0,1");
     dispatch(loadAllOrders("?status=0,1"));
     loadUsers("?status=1&role=admin");
-  }, []);
+  }, [dispatch]);
 
   const handleOrderReject = (orderId: string, itemId: string) => {
     Swal.fire({
@@ -98,7 +90,7 @@ const Orders: React.FunctionComponent<IOrdersProps> = (props) => {
               ) : (
                 Array.isArray(items) &&
                   items
-                    ?.filter((item) => item?.status != 2 && item?.status != 3)
+                    ?.filter((item) => item?.status !== 2 && item?.status !== 3)
                     ?.map((item, index) => (
                       <Grid item xs={12} key={item?.dish?._id}>
                         <OrderItem

@@ -10,7 +10,7 @@ const AddEditUser: React.FunctionComponent<IAddEditUserProps> = (props) => {
   return (
     <>
       <Dialog open={open} onClose={onClose}>
-        <DialogTitle>{operation == "add" ? "Add" : "Edit"}User</DialogTitle>
+        <DialogTitle>{operation === "add" ? "Add" : "Edit"}User</DialogTitle>
         <DialogContent>
           <UserForm />
         </DialogContent>

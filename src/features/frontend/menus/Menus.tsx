@@ -9,11 +9,7 @@ import Dish from "../../../shared/models/DishModel";
 import TypeFilter from "./TypeFilter";
 import CategoryFilter from "./CategoryFilter";
 import DishItem from "./DishItem";
-import {
-  addItem,
-  addNewOrder,
-  selectOrders,
-} from "../../../app/slice/orderSlice";
+import { addItem, selectOrders } from "../../../app/slice/orderSlice";
 import { useDispatch, useSelector } from "react-redux";
 import TableDropDown from "./TableDropDown";
 import Order from "../../../shared/models/OrderModel";
@@ -70,7 +66,7 @@ const Menus: React.FunctionComponent<IMenusProps> = (props) => {
 
   const filterByType = (value: string) => {
     const fData = dishData?.filter((d) => {
-      return value == "veg" ? d?.type == "veg" : true;
+      return value === "veg" ? d?.type === "veg" : true;
     });
 
     if (fData && fData?.length > 0) setFilteredData(fData);
@@ -129,7 +125,7 @@ const Menus: React.FunctionComponent<IMenusProps> = (props) => {
             {Array.isArray(filteredData) &&
               filteredData?.map((dish) => {
                 const currentOrder = orders?.find(
-                  (o) => o?.tableNo == selectedTable
+                  (o) => o?.tableNo === selectedTable
                 );
 
                 return (
@@ -137,7 +133,7 @@ const Menus: React.FunctionComponent<IMenusProps> = (props) => {
                     <DishItem
                       {...dish}
                       isAdded={currentOrder?.items?.some(
-                        (i) => i?.dish?._id == dish?._id
+                        (i) => i?.dish?._id === dish?._id
                       )}
                       isTableSelected={!!selectedTable}
                       handleAddItem={() => handleAddItem(dish, currentOrder)}

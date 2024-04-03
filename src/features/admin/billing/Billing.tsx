@@ -31,7 +31,7 @@ const Billing: React.FunctionComponent<IBillingProps> = (props) => {
 
     if (order) {
       const items = [...order?.items]
-        ?.filter((item: any) => item?.status == 3)
+        ?.filter((item: any) => item?.status === 3)
         .map((item: any) => {
           return {
             name: item?.dish?.name,

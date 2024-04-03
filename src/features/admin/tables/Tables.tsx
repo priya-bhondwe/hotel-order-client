@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import MUIDatatable, { MUIDataTableColumn } from "mui-datatables";
 import Table from "../../../shared/models/TableModel";
-import endpoints from "../../../api/endpoints";
 import AddEditTable from "./AddEditTable";
 import TableContext, { defaultTable } from "./TableContext";
 import Swal from "sweetalert2";
@@ -106,7 +105,7 @@ const Tables: React.FunctionComponent<ITableProps> = (props) => {
       label: "Status",
       options: {
         customBodyRender(status: number) {
-          return status == 1 ? "Active" : "Inactive";
+          return status === 1 ? "Active" : "Inactive";
         },
       },
     },

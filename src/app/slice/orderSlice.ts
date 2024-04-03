@@ -14,13 +14,13 @@ const orderSlice = createSlice({
     addNewOrder(state, { payload }) {
       //state is array of order
       // remove existing order of current tablesNo if available
-      const orders = state?.filter((o) => o?.tableNo != payload?.tableNo);
+      const orders = state?.filter((o) => o?.tableNo !== payload?.tableNo);
       //add new order
       return [...orders, payload];
     },
 
     cancelOrder: (state, { payload: { tableNo } }) => {
-      return state?.filter((order) => order?.tableNo != tableNo);
+      return state?.filter((order) => order?.tableNo !== tableNo);
     },
 
     //to add dish in the order
@@ -35,7 +35,7 @@ const orderSlice = createSlice({
         newState && newState?.findIndex((order) => order?.tableNo === tableNo);
 
       //order is not available ,then add new order
-      if (orderIndex == -1 && item) {
+      if (orderIndex === -1 && item) {
         //add new order
         newState.push({
           tableNo,
@@ -54,10 +54,10 @@ const orderSlice = createSlice({
 
         //get the index of a dish in the order
         const dishIndex = dishes?.findIndex(
-          ({ dish }) => dish?._id == item?.dish?._id
+          ({ dish }) => dish?._id === item?.dish?._id
         );
         // if dish already exists
-        if (dishIndex != -1) {
+        if (dishIndex !== -1) {
           //access single dish
           const dish = { ...dishes[dishIndex] };
 
@@ -84,7 +84,7 @@ const orderSlice = createSlice({
       const newState = [...state];
 
       //get order index by table number
-      const orderIndex = newState?.findIndex((o) => o?.tableNo == tableNo);
+      const orderIndex = newState?.findIndex((o) => o?.tableNo === tableNo);
 
       //get order by index
       const order = { ...newState?.at(orderIndex) };
@@ -97,9 +97,9 @@ const orderSlice = createSlice({
 
       //get order item index by dish id
       const dishIndex =
-        order && order?.items?.findIndex((i) => i?.dish?._id == dish?._id);
+        order && order?.items?.findIndex((i) => i?.dish?._id === dish?._id);
       //if dish exists
-      if (dishIndex != undefined && dishIndex != -1) {
+      if (dishIndex !== undefined && dishIndex != -1) {
         //decrement quantity by 1
         //get the order dish by index
         const dishItem = order?.items?.at(dishIndex);
@@ -120,8 +120,8 @@ const orderSlice = createSlice({
       // return newState;
     },
     updateOrder: (state, { payload: { id, order } }) => {
-      const ind = state && state?.findIndex((o) => o?._id == id);
-      if (ind != -1) state?.splice(ind, 1, order);
+      const ind = state && state?.findIndex((o) => o?._id === id);
+      if (ind !== -1) state?.splice(ind, 1, order);
     },
   },
 });

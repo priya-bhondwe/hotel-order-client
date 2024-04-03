@@ -20,17 +20,17 @@ const ProtectedRoute: React.FunctionComponent<IProtectedRoutes> = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const clearSession = () => {
-    sessionStorage.clear();
-    dispatch(addUser({}));
-    navigate("/login");
-  };
-
   React.useEffect(() => {
     //validate token
     // after User log in
 
     const token = sessionStorage.getItem("accessToken");
+    const clearSession = () => {
+      sessionStorage.clear();
+      dispatch(addUser({}));
+      navigate("/login");
+    };
+
     if (token) {
       AuthService.validateToken(token)
         .then((data) => {

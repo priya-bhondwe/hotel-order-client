@@ -3,9 +3,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Checkbox from "@mui/material/Checkbox";
-import Avatar from "@mui/material/Avatar";
 import DataService from "../../../services/DataService";
 
 interface ICategoryFilterProps {
@@ -31,7 +29,7 @@ const CategoryFilter: React.FunctionComponent<ICategoryFilterProps> = ({
 
   React.useEffect(() => {
     onFilter(checked);
-  }, [checked]);
+  }, [checked, onFilter]);
 
   const handleToggle = (value: string) => () => {
     const currentIndex = checked.indexOf(value);
