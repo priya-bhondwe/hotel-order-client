@@ -58,6 +58,7 @@ const ForgotPassword = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            padding: 3,
           }}
         >
           {isSubmitted ? (
