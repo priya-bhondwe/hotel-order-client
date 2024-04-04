@@ -11,7 +11,7 @@ const TypeFilter: React.FunctionComponent<ITypeFilterProps> = ({
   const [checked, setChecked] = React.useState<string>("");
 
   const handleToggle = (value: string) => () => {
-    if (checked == "veg") {
+    if (checked === "veg") {
       setChecked("");
     } else {
       setChecked("veg");
