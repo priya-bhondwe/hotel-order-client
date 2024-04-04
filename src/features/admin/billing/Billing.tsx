@@ -23,7 +23,7 @@ const Billing: React.FunctionComponent<IBillingProps> = (props) => {
   const [currentOrder, setCurrentOrder] = React.useState<any>();
 
   //   fetch order based on tableNo and order status
-  const loadOrder = async () => {
+  const loadOrder = React.useCallback(async () => {
     const { data } = await OrderService?.fetchOneOrder(
       `?status=0&tableNo=${selectedTable}`
     );
@@ -46,16 +46,16 @@ const Billing: React.FunctionComponent<IBillingProps> = (props) => {
     } else {
       setCurrentOrder({});
     }
-  };
+  }, [selectedTable]);
 
   React.useEffect(() => {
     if (selectedTable > 0) loadOrder();
-  }, [selectedTable]);
+  }, [selectedTable, loadOrder]);
 
   React.useEffect(() => {
     dispatch(loadAllOrders("?status=0"));
     console.log("allOrders: ", allOrders);
-  }, []);
+  }, [dispatch, allOrders]);
 
   React.useEffect(() => {
     if (Array.isArray(currentOrder?.items)) {
@@ -112,6 +112,7 @@ const Billing: React.FunctionComponent<IBillingProps> = (props) => {
           data={currentOrder?.items ?? []}
           columns={columns}
         />
+        <div>Total Order Amount: {orderAmount}</div>
       </Paper>
     </Container>
   );

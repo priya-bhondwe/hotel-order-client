@@ -18,7 +18,7 @@ const Users = lazy(() => import("../../features/admin/users/Users"));
 const Tables = lazy(() => import("../../features/admin/tables/Tables"));
 const Billing = lazy(() => import("../../features/admin/billing/Billing"));
 
-export default [
+const adminRoutes = [
   {
     label: "Dashboard",
     component: <Dashboard />,
@@ -76,3 +76,4 @@ export default [
     roles: ["superadmin"],
   },
 ];
+export default adminRoutes;

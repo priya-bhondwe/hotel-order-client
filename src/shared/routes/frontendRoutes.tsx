@@ -16,7 +16,7 @@ const ResetPassword = lazy(
   () => import("../../features/frontend/reset-password/ResetPassword")
 );
 
-export default [
+const frontendRoutes = [
   {
     label: "Home",
     path: "",
@@ -61,3 +61,4 @@ export default [
     showInMenu: false,
   },
 ];
+export default frontendRoutes;

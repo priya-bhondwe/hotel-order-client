@@ -25,7 +25,7 @@ const orderSlice = createSlice({
 
     //to add dish in the order
     addItem: (state, { payload }) => {
-      const { tableNo, status, item } = payload;
+      const { tableNo, item } = payload;
 
       // clone the state
       const newState = [...state];
@@ -88,12 +88,6 @@ const orderSlice = createSlice({
 
       //get order by index
       const order = { ...newState?.at(orderIndex) };
-
-      // const  item ={
-      //   dish:{..},
-      //   qty:1,
-      //   status:0,
-      // }
 
       //get order item index by dish id
       const dishIndex =

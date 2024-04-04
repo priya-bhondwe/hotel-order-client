@@ -1,4 +1,4 @@
-export default {
+const endpoints = {
   serverBaseUrl: "https://hotel-order-app.onrender.com",
   api: {
     users: {
@@ -44,3 +44,4 @@ export default {
     },
   },
 };
+export default endpoints;

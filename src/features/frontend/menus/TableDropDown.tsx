@@ -25,17 +25,20 @@ const TableDropDown: React.FunctionComponent<ITableDropDownProps> = ({
     if (data?.data) setTableData(data?.data);
   };
 
-  const updateTableNumber = (num: number) => {
-    getTable(num);
-    localStorage.setItem("selectedTable", num.toString());
-    setSelectedTable(num);
-  };
+  const updateTableNumber = React.useCallback(
+    (num: number) => {
+      getTable(num);
+      localStorage.setItem("selectedTable", num.toString());
+      setSelectedTable(num);
+    },
+    [getTable, setSelectedTable]
+  );
   React.useEffect(() => {
     loadTables();
     const tableNO = localStorage.getItem("selectedTable");
     // if (tableNO) setSelectedTable(parseInt(tableNO));
     if (tableNO) updateTableNumber(parseInt(tableNO));
-  }, [onchange, updateTableNumber]);
+  }, [updateTableNumber]);
 
   const handleChange = (e: SelectChangeEvent<HTMLInputElement>) => {
     const num = e?.target?.value as string;

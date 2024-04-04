@@ -79,6 +79,7 @@ const Orders: React.FunctionComponent<IOrdersProps> = (props) => {
   return (
     <>
       <Container>
+        {isOrderAccepted && <h1>Order Accepted!</h1>}
         <Grid container spacing={2}>
           {Array.isArray(rowOrders) &&
             rowOrders?.map((order) => {
