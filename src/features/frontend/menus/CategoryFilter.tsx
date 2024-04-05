@@ -13,6 +13,7 @@ const CategoryFilter: React.FunctionComponent<ICategoryFilterProps> = ({
   onFilter,
 }) => {
   const [categories, setCategories] = React.useState<string[]>([]);
+  const onFilterRef = React.useRef(onFilter);
 
   const [checked, setChecked] = React.useState<string[]>([]);
 
@@ -29,8 +30,11 @@ const CategoryFilter: React.FunctionComponent<ICategoryFilterProps> = ({
 
   React.useEffect(() => {
     onFilter(checked);
-  }, [checked, onFilter]);
+  }, [checked]);
 
+  React.useEffect(() => {
+    onFilterRef.current(checked);
+  }, [checked]);
   const handleToggle = (value: string) => () => {
     const currentIndex = checked.indexOf(value);
     const newChecked = [...checked];
