@@ -59,22 +59,40 @@ const Menus: React.FunctionComponent<IMenusProps> = (props) => {
     else setFilteredData(dishData);
   }; // handleSearchChange
 
-  const filterByCategories = (categories: string[]) => {
-    const fData = dishData?.filter((d) => {
-      return categories?.includes(d?.category);
-    });
+  // const filterByCategories = (categories: string[]) => {
+  //   const fData = dishData?.filter((d) => {
+  //     return categories?.includes(d?.category);
+  //   });
 
-    if (fData && fData?.length > 0) setFilteredData(fData);
-    else setFilteredData(dishData);
+  //   if (fData && fData?.length > 0) setFilteredData(fData);
+  //   else setFilteredData(dishData);
+  // };
+
+  // const filterByType = (value: string) => {
+  //   const fData = dishData?.filter((d) => {
+  //     return value == "veg" ? d?.type == "veg" : true;
+  //   });
+
+  //   if (fData && fData?.length > 0) setFilteredData(fData);
+  //   else setFilteredData(dishData);
+  // };
+
+  const filterByCategories = (categories: string[]) => {
+    setFilteredData((prevData) => {
+      const newData = dishData?.filter((d) => {
+        return categories?.includes(d?.category);
+      });
+      return newData || prevData;
+    });
   };
 
   const filterByType = (value: string) => {
-    const fData = dishData?.filter((d) => {
-      return value == "veg" ? d?.type == "veg" : true;
+    setFilteredData((prevData) => {
+      const newData = dishData?.filter((d) => {
+        return value === "veg" ? d?.type === "veg" : true;
+      });
+      return newData || prevData;
     });
-
-    if (fData && fData?.length > 0) setFilteredData(fData);
-    else setFilteredData(dishData);
   };
 
   const handleAddItem = (dish: Dish | any, order: Order | undefined) => {
