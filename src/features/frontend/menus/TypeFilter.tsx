@@ -11,7 +11,7 @@ const TypeFilter: React.FunctionComponent<ITypeFilterProps> = ({
   const [checked, setChecked] = React.useState<string>("");
 
   const handleToggle = (value: string) => () => {
-    if (checked == "veg") {
+    if (checked === "veg") {
       setChecked("");
     } else {
       setChecked("veg");
@@ -20,7 +20,8 @@ const TypeFilter: React.FunctionComponent<ITypeFilterProps> = ({
 
   React.useEffect(() => {
     onChange(checked);
-  }, [checked]);
+  }, [checked,onChange]);
+
   return (
     <Box sx={{ display: "flex", justifyContent: "space-between", p: 2 }}>
       <Typography component="span">Veg Only</Typography>
