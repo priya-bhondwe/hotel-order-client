@@ -22,9 +22,9 @@ const TypeFilter: React.FunctionComponent<ITypeFilterProps> = ({
     }
   };
 
-  React.useEffect(() => {
-    onChange(checked);
-  }, [checked]);
+  // React.useEffect(() => {
+  //   onChange(checked);
+  // }, [checked]);
 
   React.useEffect(() => {
     onChangeRef.current(checked);

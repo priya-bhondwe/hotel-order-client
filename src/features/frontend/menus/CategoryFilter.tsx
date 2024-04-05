@@ -28,9 +28,9 @@ const CategoryFilter: React.FunctionComponent<ICategoryFilterProps> = ({
     loadCategories();
   }, []);
 
-  React.useEffect(() => {
-    onFilter(checked);
-  }, [checked]);
+  // React.useEffect(() => {
+  //   onFilter(checked);
+  // }, [checked]);
 
   React.useEffect(() => {
     onFilterRef.current(checked);
