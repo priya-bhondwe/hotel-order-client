@@ -33,6 +33,7 @@ const TableDropDown: React.FunctionComponent<ITableDropDownProps> = ({
     },
     [getTable, setSelectedTable]
   );
+  
   React.useEffect(() => {
     loadTables();
     const tableNO = localStorage.getItem("selectedTable");

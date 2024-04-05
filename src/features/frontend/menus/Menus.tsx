@@ -9,7 +9,11 @@ import Dish from "../../../shared/models/DishModel";
 import TypeFilter from "./TypeFilter";
 import CategoryFilter from "./CategoryFilter";
 import DishItem from "./DishItem";
-import { addItem, selectOrders } from "../../../app/slice/orderSlice";
+import {
+  addItem,
+  addNewOrder,
+  selectOrders,
+} from "../../../app/slice/orderSlice";
 import { useDispatch, useSelector } from "react-redux";
 import TableDropDown from "./TableDropDown";
 import Order from "../../../shared/models/OrderModel";
@@ -66,7 +70,7 @@ const Menus: React.FunctionComponent<IMenusProps> = (props) => {
 
   const filterByType = (value: string) => {
     const fData = dishData?.filter((d) => {
-      return value === "veg" ? d?.type === "veg" : true;
+      return value == "veg" ? d?.type == "veg" : true;
     });
 
     if (fData && fData?.length > 0) setFilteredData(fData);
@@ -95,15 +99,16 @@ const Menus: React.FunctionComponent<IMenusProps> = (props) => {
     <Container maxWidth="xl" sx={{ pt: 2 }}>
       <Grid container spacing={2}>
         <Grid item xs={12} md={3}>
-          <Card sx={{ minHeight: "40vh", textAlign: "center", padding: 5 }}>
+          <Card sx={{ minHeight: "80vh", textAlign: "center" }}>
             <TableDropDown getTable={getTable} />
+            <hr />
             <TypeFilter onChange={filterByType} />
             <hr />
             <CategoryFilter onFilter={filterByCategories} />
           </Card>
         </Grid>
         <Grid item xs={12} md={9}>
-          <Card sx={{ p: 0, height: "50px" }}>
+          <Card sx={{ p: 2 }}>
             <Autocomplete
               freeSolo
               id="free-solo-2-demo"
@@ -120,20 +125,21 @@ const Menus: React.FunctionComponent<IMenusProps> = (props) => {
               )}
             />
           </Card>
+          <hr />
 
           <Grid container spacing={1}>
             {Array.isArray(filteredData) &&
               filteredData?.map((dish) => {
                 const currentOrder = orders?.find(
-                  (o) => o?.tableNo === selectedTable
+                  (o) => o?.tableNo == selectedTable
                 );
 
                 return (
-                  <Grid item xs={6} md={3} key={dish?._id}>
+                  <Grid item xs={12} md={3} key={dish?._id}>
                     <DishItem
                       {...dish}
                       isAdded={currentOrder?.items?.some(
-                        (i) => i?.dish?._id === dish?._id
+                        (i) => i?.dish?._id == dish?._id
                       )}
                       isTableSelected={!!selectedTable}
                       handleAddItem={() => handleAddItem(dish, currentOrder)}

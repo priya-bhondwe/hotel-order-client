@@ -29,7 +29,7 @@ const CategoryFilter: React.FunctionComponent<ICategoryFilterProps> = ({
 
   React.useEffect(() => {
     onFilter(checked);
-  }, [checked, onFilter]);
+  }, [checked]);
 
   const handleToggle = (value: string) => () => {
     const currentIndex = checked.indexOf(value);

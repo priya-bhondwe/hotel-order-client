@@ -179,6 +179,7 @@ const OrderCheckout: React.FunctionComponent<IOrderCheckoutProps> = (props) => {
     const { data } = await OrderService?.fetchOneOrder(
       `?tableNo=${selectedTable}&status=0`
     );
+    
     // console.log("datat:"data );
     if (data?.data) setCurrentOrder(data?.data);
     else {
